@@ -1,6 +1,8 @@
 import Ledger from '@ledgerhq/hw-app-eth';
 import ethTx from 'ethereumjs-tx';
 import u2fTransport from '@ledgerhq/hw-transport-u2f';
+import u2fUtils from 'u2f-api';
+import TransportWebUSB from '@ledgerhq/hw-transport-webusb';
 import { LEDGER as ledgerType } from '../../bip44/walletTypes';
 import bip44Paths from '../../bip44';
 import HDWalletInterface from '@/wallets/HDWalletInterface';
@@ -22,6 +24,7 @@ class ledgerWallet {
     this.needPassword = NEED_PASSWORD;
     this.supportedPaths = bip44Paths[ledgerType];
   }
+
   async init(basePath) {
     this.basePath = basePath ? basePath : this.supportedPaths[0].path;
     this.isHardened = this.basePath.split('/').length - 1 === 2;
@@ -35,6 +38,7 @@ class ledgerWallet {
       this.hdKey.chainCode = Buffer.from(rootPub.chainCode, 'hex');
     }
   }
+
   async getAccount(idx) {
     let derivedKey, accountPath;
     if (this.isHardened) {
@@ -98,13 +102,16 @@ class ledgerWallet {
       msgSigner
     );
   }
+
   getCurrentPath() {
     return this.basePath;
   }
+
   getSupportedPaths() {
     return this.supportedPaths;
   }
 }
+
 const createWallet = async basePath => {
   const _ledgerWallet = new ledgerWallet();
   await _ledgerWallet.init(basePath);
@@ -112,7 +119,15 @@ const createWallet = async basePath => {
 };
 createWallet.errorHandler = errorHandler;
 const getLedgerTransport = async () => {
-  const transport = await u2fTransport.create(3000, 3000);
+  let transport;
+  if (await u2fUtils.isSupported()) {
+    transport = await u2fTransport.create(3000, 3000);
+  } else if (typeof window.navigator.usb !== 'undefined') {
+    transport = await TransportWebUSB.create(3000, 3000);
+  } else {
+    // Just fallback to u2f to provide a compatible interface/ known failure path
+    transport = await u2fTransport.create(3000, 3000);
+  }
   return transport;
 };
 const getLedgerAppConfig = async _ledger => {

@@ -51,6 +51,7 @@ const calculateChainIdFromV = v => {
   if (chainId < 0) chainId = 0;
   return chainId;
 };
+
 export {
   getBufferFromHex,
   bufferToHex,
