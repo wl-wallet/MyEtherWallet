@@ -140,7 +140,7 @@ export default {
       this.items.forEach(item => {
         const u2fhw = ['secalot', 'ledger', 'bitbox'];
         const inMobile = ['secalot', 'keepkey'];
-        const webUsb = ['keepkey'];
+        const webUsb = ['keepkey', 'ledger'];
 
         if (webUsb.includes(item.name)) {
           const disable =

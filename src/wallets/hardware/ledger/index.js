@@ -125,7 +125,7 @@ const getLedgerTransport = async () => {
   } else if (typeof window.navigator.usb !== 'undefined') {
     transport = await TransportWebUSB.create(3000, 3000);
   } else {
-    // Just fallback to u2f to provide a compatible interface/ known failure path
+    // Just fallback to u2f to provide a known failure path
     transport = await u2fTransport.create(3000, 3000);
   }
   return transport;
@@ -135,7 +135,7 @@ const getLedgerAppConfig = async _ledger => {
   return appConfig;
 };
 const getRootPubKey = async (_ledger, _path) => {
-  const pubObj = await _ledger.getAddress(_path, false, true);
+  const pubObj = await _ledger.getAddress(_path, false);
   return {
     publicKey: pubObj.publicKey,
     chainCode: pubObj.chainCode
