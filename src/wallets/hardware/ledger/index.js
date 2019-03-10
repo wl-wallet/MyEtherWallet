@@ -113,6 +113,7 @@ class ledgerWallet {
 }
 
 const createWallet = async basePath => {
+  console.log('basePath1', basePath); // todo remove dev item
   const _ledgerWallet = new ledgerWallet();
   await _ledgerWallet.init(basePath);
   return _ledgerWallet;
@@ -135,7 +136,9 @@ const getLedgerAppConfig = async _ledger => {
   return appConfig;
 };
 const getRootPubKey = async (_ledger, _path) => {
-  const pubObj = await _ledger.getAddress(_path, false);
+  console.log('basePath2', _path); // todo remove dev item
+  const pubObj = await _ledger.getAddress(_path, false, true);
+  console.log(pubObj); // todo remove dev item
   return {
     publicKey: pubObj.publicKey,
     chainCode: pubObj.chainCode

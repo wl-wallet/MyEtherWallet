@@ -7,10 +7,69 @@
     centered
   >
     <div class="modal-content-container">
-      <div class="d-block text-center">
-        <b-alert :show="mayNotBeAttached" fade variant="warning"
-          >Please make sure your device is connected</b-alert
+      <div v-if="selected === 'ledger'" class="collapse-container">
+        <b-btn
+          v-b-toggle.collapse1
+          class="collapse-open-button"
+          variant="primary"
         >
+          <p class="button-number">1</p>
+          <div class="network">
+            <p>Network</p>
+            <p class="network-name">
+              ({{ selectedNetwork.type.name }} - {{ selectedNetwork.service }})
+            </p>
+          </div>
+          <p v-if="false" class="right-button">Cancel</p>
+        </b-btn>
+        <b-collapse
+          id="collapse1"
+          v-model="showCollapse1"
+          class="collapse-content"
+        >
+          <ul class="networks">
+            <li
+              v-for="(key, index) in Object.keys(reorderNetworkList)"
+              :key="$router.path + key + index"
+            >
+              <div class="network-title">
+                <div class="network-icon-container">
+                  <!--HdPaths[key].network-->
+                  <img
+                    v-if="Networks[key][0].type.icon"
+                    :src="Networks[key][0].type.icon"
+                  />
+                  <div v-else class="no-icon">
+                    <p>No</p>
+                    <p>Icon</p>
+                  </div>
+                </div>
+                <p>{{ key }}</p>
+              </div>
+              <div class="network-content">
+                <p
+                  v-for="net in Networks[key]"
+                  :key="net.service"
+                  :class="
+                    net.service === selectedNetwork.service &&
+                    net.type &&
+                    net.type.name === selectedNetwork.type.name
+                      ? 'current-network'
+                      : ''
+                  "
+                  @click="switchNetwork(net)"
+                >
+                  {{ net.service }}
+                </p>
+              </div>
+            </li>
+          </ul>
+        </b-collapse>
+      </div>
+      <div class="d-block text-center">
+        <b-alert :show="mayNotBeAttached" fade variant="warning">{{
+          $t('accessWallet.checkDeviceConn')
+        }}</b-alert>
         <div class="button-options hardware-button-options">
           <wallet-option
             v-for="(item, idx) in items"
@@ -43,6 +102,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import CustomerSupport from '@/components/CustomerSupport';
 import ledger from '@/assets/images/icons/button-ledger.png';
 import ledgerHov from '@/assets/images/icons/button-ledger-hover.png';
@@ -55,7 +115,7 @@ import trezorHov from '@/assets/images/icons/button-trezor-hover.png';
 import keepkey from '@/assets/images/icons/button-keepkey.png';
 import keepkeyHov from '@/assets/images/icons/button-keepkey-hover.png';
 import WalletOption from '../WalletOption';
-import { Toast } from '@/helpers';
+import { Misc, Toast } from '@/helpers';
 import { isSupported } from 'u2f-api';
 import platform from 'platform';
 import {
@@ -65,6 +125,9 @@ import {
   BitBoxWallet,
   SecalotWallet
 } from '@/wallets';
+
+import * as HdPaths from '@/wallets/bip44/paths';
+
 export default {
   components: {
     'customer-support': CustomerSupport,
@@ -132,10 +195,29 @@ export default {
           disabled: false,
           msg: ''
         }
-      ]
+      ],
+      showCollapse1: false,
+      HdPaths: HdPaths
     };
   },
+  computed: {
+    ...mapGetters({
+      network: 'network',
+      Networks: 'Networks',
+      customPaths: 'customPaths',
+      path: 'path',
+      web3: 'web3',
+      wallet: 'wallet'
+    }),
+    selectedNetwork() {
+      return this.network;
+    },
+    reorderNetworkList() {
+      return Misc.reorderNetworks();
+    }
+  },
   mounted() {
+    console.log(Object.keys(HdPaths)); // todo remove dev item
     isSupported().then(res => {
       this.items.forEach(item => {
         const u2fhw = ['secalot', 'ledger', 'bitbox'];
@@ -174,6 +256,9 @@ export default {
     });
   },
   methods: {
+    switchNetwork(network) {
+      this.$store.dispatch('switchNetwork', network).then(() => {});
+    },
     isMobile() {
       return (
         typeof window.orientation !== 'undefined' ||
@@ -186,8 +271,9 @@ export default {
       }, 1000);
       switch (this.selected) {
         case 'ledger':
-          LedgerWallet()
+          LedgerWallet(`m/44'/${this.network.type.chainID}'/0'/0`)
             .then(_newWallet => {
+              console.log(_newWallet); // todo remove dev item
               clearTimeout(showPluggedInReminder);
               this.$emit('hardwareWalletOpen', _newWallet);
             })
