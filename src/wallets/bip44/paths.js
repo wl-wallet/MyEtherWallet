@@ -53,7 +53,7 @@ const musicoin = {
 const goChain = {
   path: "m/44'/6060'/0'/0",
   label: 'GoChain',
-  network: "GO"
+  network: 'GO'
 };
 const eosClassic = {
   path: "m/44'/2018'/0'/0",
@@ -116,6 +116,10 @@ const ledgerEthereumClassic = {
   label: 'Ethereum Classic',
   network: 'ETC'
 };
+const ledgerEthereumClassicVintage = {
+  path: "m/44'/60'/160720'/0'",
+  label: 'Ethereum Classic MEW Vintage'
+};
 const ledgerLiveEthereumClassic = {
   path: "m/44'/61'",
   label: 'Ethereum Classic - Ledger Live',
@@ -141,6 +145,10 @@ const keepkeyEthereumClassic = {
   label: 'Ethereum Classic',
   network: 'ETC'
 };
+const thundercore = {
+  path: "m/44'/1001'/0'/0",
+  label: 'ThunderCore'
+};
 export {
   ethereum,
   ethereumClassic,
@@ -148,6 +156,7 @@ export {
   ledgerLiveEthereum,
   ledgerEthereumClassic,
   ledgerLiveEthereumClassic,
+  ledgerEthereumClassicVintage,
   ropsten,
   singularDTV,
   expanse,
@@ -170,5 +179,6 @@ export {
   rskMainnet,
   rskTestnet,
   keepkeyEthereum,
-  keepkeyEthereumClassic
+  keepkeyEthereumClassic,
+  thundercore
 };

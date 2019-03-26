@@ -11,6 +11,7 @@ import {
   MAX_DEST_AMOUNT,
   MIN_RATE_BUFFER,
   defaultValues,
+  specialGasLimits,
   KyberCurrencies,
   kyberAddressFallback,
   kyberNetworkABI,
@@ -31,6 +32,7 @@ export default class Kyber {
     this.getRateForUnit =
       typeof props.getRateForUnit === 'boolean' ? props.getRateForUnit : false;
     this.hasRates = 0;
+    this.specialGasLimits = specialGasLimits;
     this.tradeGasLimit = defaultValues.tradeGasLimit;
     this.tokenToTokenGasLimit = defaultValues.tokenToTokenGasLimit;
     this.tokenApprovalGas = defaultValues.tokenApprovalGasLimit;
@@ -394,7 +396,17 @@ export default class Kyber {
     const minRateWeiBN = new BigNumber(minRateWei);
     return minRateWeiBN
       .minus(minRateWeiBN.times(new BigNumber(MIN_RATE_BUFFER)))
+      .toFixed(0)
       .toString();
+  }
+
+  getGeneralGasLimits(fromCurrency, toCurrency) {
+    if (this.specialGasLimits[toCurrency]) {
+      return this.specialGasLimits[toCurrency];
+    } else if (this.isTokenToToken(fromCurrency, toCurrency)) {
+      return this.tokenToTokenGasLimit;
+    }
+    return this.tradeGasLimit;
   }
 
   async getTradeData(
@@ -418,9 +430,7 @@ export default class Kyber {
       value: Object.values(networkSymbols).includes(fromCurrency)
         ? fromValueWei
         : 0,
-      gas: this.isTokenToToken(fromCurrency, toCurrency)
-        ? this.tokenToTokenGasLimit
-        : this.tradeGasLimit,
+      gas: this.getGeneralGasLimits(fromCurrency, toCurrency),
       data
     };
   }
@@ -469,11 +479,27 @@ export default class Kyber {
     swapDetails.maybeToken = true;
     swapDetails.providerAddress = this.getAddress();
     swapDetails.kyberMaxGas = await this.callKyberContract('maxGasPrice');
+    const finalRateWei = await this.getExpectedRate(
+      swapDetails.fromCurrency,
+      swapDetails.toCurrency,
+      this.convertToTokenWei(swapDetails.fromCurrency, swapDetails.fromValue)
+    );
+    const finalRate = this.convertToTokenBase('ETH', finalRateWei);
     swapDetails.dataForInitialization = await this.generateDataForTransactions(
       swapDetails
     );
+    swapDetails.toValue = new BigNumber(finalRate).times(
+      new BigNumber(swapDetails.fromValue).toFixed(18).toString()
+    );
+
+    swapDetails.finalRate = this.calculateNormalizedExchangeRate(
+      swapDetails.toValue,
+      swapDetails.fromValue
+    );
     swapDetails.providerReceives = swapDetails.fromValue;
-    swapDetails.providerSends = swapDetails.toValue;
+    swapDetails.providerSends = new BigNumber(finalRate).times(
+      new BigNumber(swapDetails.fromValue)
+    );
     swapDetails.parsed = {
       sendToAddress: this.getKyberNetworkAddress(),
       status: 'pending',
@@ -484,7 +510,7 @@ export default class Kyber {
     return swapDetails;
   }
 
-  static async getOrderStatus(/*noticeDetails*/) {
+  static async getOrderStatus() {
     return 'new';
   }
 
@@ -513,6 +539,10 @@ export default class Kyber {
         `Token [${token}] not included in kyber network list of tokens`
       );
     }
+  }
+
+  calculateNormalizedExchangeRate(toValue, fromValue) {
+    return new BigNumber(toValue).div(fromValue).toString(10);
   }
 
   convertToTokenBase(token, value) {
