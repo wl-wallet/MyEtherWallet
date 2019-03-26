@@ -54,7 +54,6 @@
     "@keepkey/keepkey.js": "1.2.1",
     "@ledgerhq/hw-app-eth": "4.47.0",
     "@ledgerhq/hw-transport-u2f": "4.47.0",
-    "@ledgerhq/hw-app-eth": "4.43.0",
     "@ledgerhq/hw-transport-web-ble": "4.43.0",
     "@ledgerhq/hw-transport-webusb": "4.43.0",
     "@myetherwallet/eth-token-balance": "0.1.4",
