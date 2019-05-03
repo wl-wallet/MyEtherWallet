@@ -242,6 +242,14 @@
         </b-collapse>
       </div>
     </div>
+    <accordion-menu title="Network" number="1"
+      >aaaaaaaaaaaaaaaaaaa
+      <p>aaaaaaaaaaa</p>
+      <p>aaaaaaaaaaa</p>
+      <p>aaaaaaaaaaa</p>
+      <p>aaaaaaaaaaa</p>
+      <p>aaaaaaaaaaa</p>
+    </accordion-menu>
     <!-- .modal-content-container -->
   </b-modal>
 </template>
@@ -253,12 +261,14 @@ import { Misc, Toast } from '@/helpers';
 import web3utils from 'web3-utils';
 import BigNumber from 'bignumber.js';
 import Blockie from '@/components/Blockie';
+import AccordionMenu from '@/components/AccordionMenu';
 
 const MAX_ADDRESSES = 5;
 export default {
   components: {
     'customer-support': CustomerSupport,
-    blockie: Blockie
+    blockie: Blockie,
+    'accordion-menu': AccordionMenu
   },
   props: {
     hardwareWallet: {
