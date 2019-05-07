@@ -405,6 +405,8 @@ export default {
       return this.fiatCurrenciesArray.includes(this.toCurrency);
     },
     validSwap() {
+      return true;
+      /*
       // initial chack.  will provide an alert on the next screen if no address is provided
       const canExit =
         this.isExitToFiat && this.fromCurrency !== this.baseCurrency
@@ -418,6 +420,7 @@ export default {
         (+this.fromValue <= this.selectedProvider.maxValue ||
           this.selectedProvider.maxValue === 0)
       );
+      */
     },
     checkBityMin() {
       if (this.swap.isProvider(this.providerNames.bity)) {

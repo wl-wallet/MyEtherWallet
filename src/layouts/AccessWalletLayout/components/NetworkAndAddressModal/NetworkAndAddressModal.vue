@@ -242,14 +242,32 @@
         </b-collapse>
       </div>
     </div>
-    <accordion-menu title="Network" number="1"
-      >aaaaaaaaaaaaaaaaaaa
-      <p>aaaaaaaaaaa</p>
-      <p>aaaaaaaaaaa</p>
-      <p>aaaaaaaaaaa</p>
-      <p>aaaaaaaaaaa</p>
-      <p>aaaaaaaaaaa</p>
-    </accordion-menu>
+    <div>
+      <accordion-menu
+        :isopen="showCollapse1"
+        title="Network"
+        number="1"
+        @click.native="showCollapse1 = !showCollapse1"
+        >aaaaaaaaaaaaaaaaaaa
+        <p>aaaaaaaaaaa</p>
+        <p>aaaaaaaaaaa</p>
+        <p>aaaaaaaaaaa</p>
+        <p>aaaaaaaaaaa</p>
+        <p>aaaaaaaaaaa</p>
+      </accordion-menu>
+      <accordion-menu
+        :isopen="showCollapse2"
+        title="Network"
+        number="1"
+        @click.native="showCollapse2 = !showCollapse2"
+        >aaaaaaaaaaaaaaaaaaa
+        <p>aaaaaaaaaaa</p>
+        <p>aaaaaaaaaaa</p>
+        <p>aaaaaaaaaaa</p>
+        <p>aaaaaaaaaaa</p>
+        <p>aaaaaaaaaaa</p>
+      </accordion-menu>
+    </div>
     <!-- .modal-content-container -->
   </b-modal>
 </template>
