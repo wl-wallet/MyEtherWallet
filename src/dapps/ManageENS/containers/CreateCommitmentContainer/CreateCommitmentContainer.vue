@@ -9,7 +9,7 @@
       </div>
 
       <div class="year-selector">
-        <standard-dropdown-selector />
+        <standard-dropdown-selector :options="yearOptions" />
       </div>
 
       <div class="secret-phrase-container">
@@ -78,7 +78,10 @@ export default {
   },
   data() {
     return {
-      duration: '1'
+      duration: '1',
+      yearOptions: {
+        title: 'How many years do you want to keep the name?'
+      }
     };
   },
   computed: {

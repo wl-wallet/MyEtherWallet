@@ -1,5 +1,5 @@
 <template>
-  <div class="standard-drop-down-selector">
+  <div class="drop-down-bid-currency-selector">
     <div class="form-title-container">
       <div class="title">{{ options.title }}</div>
     </div>
@@ -8,9 +8,17 @@
       <div
         :class="dropdownOpen ? 'dropdown-open' : ''"
         class="dropdown-input-box"
-        @click="dropdownOpen = !dropdownOpen"
+        @click="openDropdownFocustToSearchInput"
       >
-        aaaaaaa
+        <div class="selected-coin">aaa</div>
+        <div class="dropdown-open-button">
+          <i
+            v-if="!dropdownOpen"
+            class="fa fa-chevron-down"
+            aria-hidden="true"
+          />
+          <i v-if="dropdownOpen" class="fa fa-chevron-up" aria-hidden="true" />
+        </div>
       </div>
       <div
         :class="dropdownOpen ? 'show-dropdown' : ''"
@@ -48,6 +56,10 @@ export default {
     document.removeEventListener('click', this.clickEvent, false);
   },
   methods: {
+    openDropdownFocustToSearchInput: function() {
+      // Focus user input to the seach input.
+      this.dropdownOpen = !this.dropdownOpen;
+    },
     clickEvent: function(event) {
       for (let count = 0; count < event.path.length; count++) {
         if (event.path[count].className === 'coin-selector-click-safe-zone') {
