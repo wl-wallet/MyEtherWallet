@@ -8,6 +8,20 @@
   }
 }
 
+.available-message {
+  p {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 35px;
+    color: $light-blue-1;
+    span {
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: 600;
+    }
+  }
+}
+
 .transfer-registrar-button {
   align-items: center;
   display: flex;

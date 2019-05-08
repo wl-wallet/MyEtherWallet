@@ -1,8 +1,17 @@
 <template lang="html">
   <div class="transfer-registrar-container">
     <div class="transfer-registrar-content">
-      <h3>Congratulations! {{ fullDomainName }} is available!</h3>
-      <p>Do you want to register {{ fullDomainName }}?</p>
+      <div class="available-message">
+        <p>Congratulations!</p>
+        <p>
+          <span>{{ fullDomainName }}</span> is available
+        </p>
+      </div>
+
+      <div class="year-selector">
+        <standard-dropdown-selector />
+      </div>
+
       <div class="secret-phrase-container">
         <label for="range-slider"
           >How many years do you want to keep the name?</label
@@ -42,10 +51,12 @@
 
 <script>
 import InterfaceBottomText from '@/components/InterfaceBottomText';
+import StandardDropdownSelector from '@/components/StandardDropdownSelector';
 
 export default {
   components: {
-    'interface-bottom-text': InterfaceBottomText
+    'interface-bottom-text': InterfaceBottomText,
+    'standard-dropdown-selector': StandardDropdownSelector
   },
   props: {
     hostName: {
