@@ -10,7 +10,9 @@
         class="dropdown-input-box"
         @click="openDropdownFocustToSearchInput"
       >
-        <div class="selected-coin">aaa</div>
+        <div ref="selectedValue" class="selected-coin">
+          {{ selectedName }}
+        </div>
         <div class="dropdown-open-button">
           <i
             v-if="!dropdownOpen"
@@ -24,9 +26,8 @@
         :class="dropdownOpen ? 'show-dropdown' : ''"
         class="dropdown-list-box"
       >
-        <ul>
-          <li>ETH</li>
-          <li>BTC</li>
+        <ul v-for="data in options.data" :key="data.key">
+          <li :value="data.value" @click="listItemClick">{{ data.name }}</li>
         </ul>
       </div>
     </div>
@@ -45,7 +46,9 @@ export default {
   },
   data() {
     return {
-      dropdownOpen: false
+      dropdownOpen: false,
+      selectedName: this.options.data[0].name,
+      selectedValue: this.options.data[0].value
     };
   },
   beforeMount() {
@@ -66,6 +69,16 @@ export default {
           return;
         }
       }
+      this.dropdownOpen = false;
+    },
+    listItemClick: function(event) {
+      //console.log(event.target.value);
+
+      // Replace the selected item text
+      this.selectedName = event.target.textContent;
+      this.selectedValue = event.target.value;
+
+      // Close dropdown
       this.dropdownOpen = false;
     }
   }
