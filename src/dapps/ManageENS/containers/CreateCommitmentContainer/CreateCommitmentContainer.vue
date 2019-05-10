@@ -8,8 +8,10 @@
         </p>
       </div>
 
+      <h1>{{ duration }}</h1>
+
       <div class="year-selector">
-        <standard-dropdown-selector :options="yearOptions" />
+        <standard-dropdown-selector :options="yearOptions" v-model="duration" />
       </div>
 
       <div class="secret-phrase-container">
@@ -78,7 +80,7 @@ export default {
   },
   data() {
     return {
-      duration: '1',
+      duration: '',
       yearOptions: {
         title: 'How many years do you want to keep the name?',
         data: [

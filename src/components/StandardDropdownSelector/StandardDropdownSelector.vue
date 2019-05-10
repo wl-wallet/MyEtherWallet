@@ -27,7 +27,9 @@
         class="dropdown-list-box"
       >
         <ul v-for="data in options.data" :key="data.key">
-          <li :value="data.value" @click="listItemClick">{{ data.name }}</li>
+          <li :value="data.value" class="list-item" @click="listItemClick">
+            {{ data.name }}
+          </li>
         </ul>
       </div>
     </div>
@@ -42,13 +44,17 @@ export default {
       default: function() {
         return {};
       }
+    },
+    defaultItem: {
+      type: Number,
+      default: null
     }
   },
   data() {
     return {
       dropdownOpen: false,
-      selectedName: this.options.data[0].name,
-      selectedValue: this.options.data[0].value
+      selectedName: 'Click to select...',
+      selectedValue: null
     };
   },
   beforeMount() {
@@ -57,6 +63,13 @@ export default {
   },
   beforeDestroy() {
     document.removeEventListener('click', this.clickEvent, false);
+  },
+  mounted() {
+    if (this.defaultItem !== null) {
+      this.selectedName = this.options.data[this.defaultItem - 1].name;
+      this.selectedValue = this.options.data[this.defaultItem - 1].value;
+      this.$emit('input', this.selectedValue);
+    }
   },
   methods: {
     openDropdownFocustToSearchInput: function() {
@@ -72,7 +85,10 @@ export default {
       this.dropdownOpen = false;
     },
     listItemClick: function(event) {
-      //console.log(event.target.value);
+      //console.log(event.target);
+      const matches = document.querySelectorAll('list-item');
+
+      event.target.classList.add('active');
 
       // Replace the selected item text
       this.selectedName = event.target.textContent;
@@ -80,6 +96,9 @@ export default {
 
       // Close dropdown
       this.dropdownOpen = false;
+
+      // Emit value back to parent
+      this.$emit('input', this.selectedValue);
     }
   }
 };
