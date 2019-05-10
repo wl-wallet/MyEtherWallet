@@ -16,19 +16,13 @@
         />
       </div>
 
-      <div class="transfer-registrar-button">
-        <button
-          :class="[
-            'large-round-button-green-filled',
-            loading ? 'disabled' : ''
-          ]"
-          @click="createCommitment"
-        >
-          <span v-show="!loading">
-            Register
-          </span>
-          <i v-show="loading" class="fa fa-spinner fa-spin" />
-        </button>
+      <div class="buttons">
+        <standard-button :options="backButton" @click.native="back" />
+        <standard-button
+          :button-disabled="loading ? true : false"
+          :options="nextButton"
+          @click.native="createCommitment"
+        />
       </div>
     </div>
     <interface-bottom-text
@@ -42,11 +36,13 @@
 <script>
 import InterfaceBottomText from '@/components/InterfaceBottomText';
 import StandardDropdownSelector from '@/components/StandardDropdownSelector';
+import StandardButton from '@/components/Buttons/StandardButton';
 
 export default {
   components: {
     'interface-bottom-text': InterfaceBottomText,
-    'standard-dropdown-selector': StandardDropdownSelector
+    'standard-dropdown-selector': StandardDropdownSelector,
+    'standard-button': StandardButton
   },
   props: {
     hostName: {
@@ -68,6 +64,12 @@ export default {
   },
   data() {
     return {
+      backButton: {
+        title: 'Back',
+        buttonStyle: 'green-border',
+        noMinWidth: true
+      },
+      nextButton: { title: 'Next', buttonStyle: 'green', noMinWidth: true },
       duration: '',
       yearOptions: {
         title: 'How many years do you want to keep the name?',
@@ -109,6 +111,13 @@ export default {
   mounted() {
     if (this.hostName === '') {
       this.$router.push('/interface/dapps/manage-ens');
+    }
+  },
+  methods: {
+    back() {
+      const path = this.$route.path.split('/');
+      const goToPath = path.slice(0, path.length - 1).join('/');
+      this.$router.push(goToPath);
     }
   }
 };

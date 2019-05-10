@@ -69,3 +69,17 @@ p {
     color: $dark-grey-1;
   }
 }
+
+.buttons {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  >* {
+    width: 100%;
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+
+
