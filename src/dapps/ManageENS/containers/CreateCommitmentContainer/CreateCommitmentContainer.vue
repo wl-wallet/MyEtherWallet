@@ -1,6 +1,7 @@
 <template lang="html">
-  <div class="transfer-registrar-container">
-    <div class="transfer-registrar-content">
+  <div class="create-commitment-container">
+    <comm-timer-modal />
+    <div class="create-commitment-content">
       <div class="available-message">
         <p>Congratulations!</p>
         <p>
@@ -37,12 +38,14 @@
 import InterfaceBottomText from '@/components/InterfaceBottomText';
 import StandardDropdownSelector from '@/components/StandardDropdownSelector';
 import StandardButton from '@/components/Buttons/StandardButton';
+import CommitmentTimerModal from '@/dapps/ManageENS/components/CommitmentTimerModal';
 
 export default {
   components: {
     'interface-bottom-text': InterfaceBottomText,
     'standard-dropdown-selector': StandardDropdownSelector,
-    'standard-button': StandardButton
+    'standard-button': StandardButton,
+    'comm-timer-modal': CommitmentTimerModal
   },
   props: {
     hostName: {

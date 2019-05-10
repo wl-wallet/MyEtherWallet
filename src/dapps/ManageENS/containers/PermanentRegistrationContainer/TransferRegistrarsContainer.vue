@@ -1,6 +1,5 @@
 <template lang="html">
   <div class="transfer-registrar-container">
-    <comm-timer-modal />
     <div class="transfer-registrar-content">
       <h3>{{ fullDomainName }} is still in the old registrar!</h3>
       <p v-show="isOwner">
@@ -34,12 +33,10 @@
 <script>
 import { mapGetters } from 'vuex';
 import InterfaceBottomText from '@/components/InterfaceBottomText';
-import CommitmentTimerModal from '@/dapps/ManageENS/components/CommitmentTimerModal';
 
 export default {
   components: {
-    'interface-bottom-text': InterfaceBottomText,
-    'comm-timer-modal': CommitmentTimerModal
+    'interface-bottom-text': InterfaceBottomText
   },
   props: {
     hostName: {

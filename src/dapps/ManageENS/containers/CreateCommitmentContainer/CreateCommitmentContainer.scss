@@ -1,9 +1,9 @@
 @import '../../ManageENS';
 
-.transfer-registrar-container {
+.create-commitment-container {
   @extend %template-container;
 
-  .transfer-registrar-content {
+  .create-commitment-content {
     //min-height: 400px;
   }
 }
@@ -24,50 +24,6 @@
 
 .year-selector {
   margin: 30px 0 40px 0;
-}
-
-.transfer-registrar-button {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-
-  button {
-    @media all and (max-width: $mobile-width) {
-      width: 100%;
-    }
-  }
-}
-
-h3 {
-  color: $mew-green;
-}
-
-p {
-  font-weight: 300;
-}
-
-.secret-phrase-container {
-  display: flex;
-  flex-flow: column;
-  padding: 30px 15px;
-
-  // input {
-  //   background-color: $light-grey-1;
-  //   border: none;
-  //   padding: 15px;
-  //   width: 100%;
-  // }
-
-  label {
-    color: $dark-blue-6;
-    font-weight: bold;
-    padding-bottom: 10px;
-  }
-
-  p {
-    color: $dark-grey-1;
-  }
 }
 
 .buttons {
