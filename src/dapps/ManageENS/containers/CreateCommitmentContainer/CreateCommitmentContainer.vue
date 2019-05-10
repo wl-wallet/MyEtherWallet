@@ -8,26 +8,14 @@
         </p>
       </div>
 
-      <h1>{{ duration }}</h1>
-
       <div class="year-selector">
-        <standard-dropdown-selector :options="yearOptions" v-model="duration" />
+        <standard-dropdown-selector
+          :options="yearOptions"
+          v-model="duration"
+          default-item="1"
+        />
       </div>
 
-      <div class="secret-phrase-container">
-        <label for="range-slider"
-          >How many years do you want to keep the name?</label
-        >
-        <b-form-input
-          id="range-slider"
-          v-model="duration"
-          type="range"
-          min="1"
-          max="20"
-          step="1"
-        />
-        <div>{{ duration > 1 ? `${duration} years` : `${duration} year` }}</div>
-      </div>
       <div class="transfer-registrar-button">
         <button
           :class="[

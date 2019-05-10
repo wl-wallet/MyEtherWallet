@@ -107,7 +107,7 @@
   ul {
     li {
       cursor: pointer;
-      padding: 10px 15px;
+      padding: 15px 15px;
       position: relative;
       display: flex;
       align-items: center;
@@ -118,6 +118,10 @@
 
       &:hover {
         background-color: $light-grey-3;
+      }
+
+      &.active {
+        background-color: $light-grey-2;
       }
 
       img {

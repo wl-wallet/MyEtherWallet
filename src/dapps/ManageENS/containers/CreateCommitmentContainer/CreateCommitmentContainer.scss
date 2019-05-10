@@ -4,7 +4,7 @@
   @extend %template-container;
 
   .transfer-registrar-content {
-    min-height: 400px;
+    //min-height: 400px;
   }
 }
 
@@ -30,6 +30,13 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  width: 100%;
+
+  button {
+    @media all and (max-width: $mobile-width) {
+      width: 100%;
+    }
+  }
 }
 
 h3 {

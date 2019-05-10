@@ -27,7 +27,12 @@
         class="dropdown-list-box"
       >
         <ul v-for="data in options.data" :key="data.key">
-          <li :value="data.value" class="list-item" @click="listItemClick">
+          <li
+            ref="listItem"
+            :value="data.value"
+            class="list-item"
+            @click="listItemClick"
+          >
             {{ data.name }}
           </li>
         </ul>
@@ -46,8 +51,8 @@ export default {
       }
     },
     defaultItem: {
-      type: Number,
-      default: null
+      type: String,
+      default: ''
     }
   },
   data() {
@@ -65,10 +70,13 @@ export default {
     document.removeEventListener('click', this.clickEvent, false);
   },
   mounted() {
-    if (this.defaultItem !== null) {
+    if (this.defaultItem !== '') {
       this.selectedName = this.options.data[this.defaultItem - 1].name;
       this.selectedValue = this.options.data[this.defaultItem - 1].value;
       this.$emit('input', this.selectedValue);
+
+      // Add active class to selected item
+      this.$refs.listItem[this.defaultItem - 1].classList.add('active');
     }
   },
   methods: {
@@ -85,8 +93,11 @@ export default {
       this.dropdownOpen = false;
     },
     listItemClick: function(event) {
-      //console.log(event.target);
-      const matches = document.querySelectorAll('list-item');
+      const items = this.$refs.listItem;
+
+      items.forEach(function(el) {
+        el.classList.remove('active');
+      });
 
       event.target.classList.add('active');
 
