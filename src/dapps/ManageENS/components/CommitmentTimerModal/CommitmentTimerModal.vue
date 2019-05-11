@@ -8,16 +8,39 @@
       no-close-on-backdrop
       class="bootstrap-modal nopadding"
     >
-      <div>
-        aaaaaaaaaa
+      <div class="timer-content">
+        <div class="content">
+          <img src="@/assets/images/icons/sand-timer.svg" />
+          <div class="time-left">01:00</div>
+        </div>
+        <div class="buttons">
+          <standard-button
+            :options="registerButton"
+            :button-disabled="true"
+            @click.native="close"
+          />
+        </div>
       </div>
     </b-modal>
   </div>
 </template>
 <script>
 //import { mapGetters } from 'vuex';
+import StandardButton from '@/components/Buttons/StandardButton';
+
 export default {
+  components: {
+    'standard-button': StandardButton
+  },
   props: {},
+  data() {
+    return {
+      registerButton: {
+        title: 'Register',
+        buttonStyle: 'green'
+      }
+    };
+  },
   computed: {},
   mounted() {
     this.$refs.commtimer.show();
