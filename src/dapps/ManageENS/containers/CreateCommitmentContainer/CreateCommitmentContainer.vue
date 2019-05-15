@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="create-commitment-container">
     <comm-timer-modal />
+    <processing-domain-modal />
     <div class="create-commitment-content">
       <div class="available-message">
         <p>Congratulations!</p>
@@ -39,13 +40,15 @@ import InterfaceBottomText from '@/components/InterfaceBottomText';
 import StandardDropdownSelector from '@/components/StandardDropdownSelector';
 import StandardButton from '@/components/Buttons/StandardButton';
 import CommitmentTimerModal from '@/dapps/ManageENS/components/CommitmentTimerModal';
+import ProcessingDomainRegistrationModal from '@/dapps/ManageENS/components/ProcessingDomainRegistrationModal';
 
 export default {
   components: {
     'interface-bottom-text': InterfaceBottomText,
     'standard-dropdown-selector': StandardDropdownSelector,
     'standard-button': StandardButton,
-    'comm-timer-modal': CommitmentTimerModal
+    'comm-timer-modal': CommitmentTimerModal,
+    'processing-domain-modal': ProcessingDomainRegistrationModal
   },
   props: {
     hostName: {

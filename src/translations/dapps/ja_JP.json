@@ -44,5 +44,9 @@
   "transferEnsTo": "Transfer ENS domain to",
   "ensNotAvailable": "is not available yet",
   "safesend_title": "SafeSend ETH Transaction",
-  "safesend_desc": "Protect and Secure your ETH transaction using SafeSend"
+  "safesend_desc": "Protect and Secure your ETH transaction using SafeSend",
+  "pleaseWait": "Hang on tight!",
+  "creatingDomain": "We are creating commitment for",
+  "processingRegistration": "Registration in progress...",
+  "manageDomain": "Manage My Domain"
 }

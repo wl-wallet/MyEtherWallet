@@ -1,7 +1,7 @@
 @import '~@/scss/GlobalVariables';
 
 .timer-content {
-  padding: 30px;
+  padding: 50px 0 ;
 }
 
 .content {
@@ -15,6 +15,21 @@
   margin-top: 20px;
   font-size: 30px;
   font-weight: 600;
+
+  &.times-up {
+    color: $mew-green;
+  }
+}
+
+.user-message {
+  margin-top: 20px;
+  p {
+    font-weight: 600;
+  }
+
+  .domain {
+    color: $light-blue-1;
+  }
 }
 
 .buttons {
@@ -22,4 +37,6 @@
   align-items: center;
   justify-content: center;
 }
+
+
 

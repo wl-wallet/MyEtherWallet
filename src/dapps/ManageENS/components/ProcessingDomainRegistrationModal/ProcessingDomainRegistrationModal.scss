@@ -1,0 +1,30 @@
+@import '~@/scss/GlobalVariables';
+
+.processing-domain-content {
+  padding: 50px 0 ;
+  font-weight: 600;
+}
+
+.processing-message {
+  margin-bottom: 30px;
+}
+
+.content {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+  text-align: center;
+
+  img {
+    height: 50px;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+

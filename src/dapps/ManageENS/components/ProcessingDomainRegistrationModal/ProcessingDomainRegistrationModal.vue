@@ -1,22 +1,19 @@
 <template>
   <div>
     <b-modal
-      ref="commtimer"
+      ref="processingdomain"
       hide-footer
       hide-header
       centered
       no-close-on-backdrop
       class="bootstrap-modal nopadding"
     >
-      <div class="timer-content">
+      <div class="processing-domain-content">
         <div class="content">
-          <img src="@/assets/images/icons/sand-timer.svg" />
-          <div class="time-left times-up">01:00</div>
-          <div class="user-message">
-            <p>{{ $t('dapps.pleaseWait') }}</p>
-            <p>{{ $t('dapps.creatingDomain') }}</p>
-            <p class="domain">aaaaa1212.eth</p>
+          <div class="processing-message">
+            {{ $t('dapps.processingRegistration') }}
           </div>
+          <img src="@/assets/images/icons/sand-timer.svg" />
         </div>
         <div class="buttons">
           <standard-button
@@ -41,22 +38,22 @@ export default {
   data() {
     return {
       registerButton: {
-        title: 'Register',
+        title: this.$t('dapps.manageDomain'),
         buttonStyle: 'green'
       }
     };
   },
   computed: {},
   mounted() {
-    //this.$refs.commtimer.show();
+    //this.$refs.processingdomain.show();
   },
   methods: {
     close() {
-      this.$refs.commtimer.hide();
+      this.$refs.processingdomain.hide();
     }
   }
 };
 </script>
 <style lang="scss" scoped>
-@import 'CommitmentTimerModal.scss';
+@import 'ProcessingDomainRegistrationModal.scss';
 </style>
