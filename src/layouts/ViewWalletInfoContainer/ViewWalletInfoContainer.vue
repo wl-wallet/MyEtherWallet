@@ -1,7 +1,24 @@
 <template>
   <div class="view-wallet-info">
     <div class="wrap">
-      aaaaaaaaa
+      <div class="page-container">
+        <div class="page-title">
+          <h2>{{ $t('common.accessMyWallet') }}</h2>
+          <p>
+            Customize your wallet information, and customize, debug transaction
+            process. Please be mindful of the limited functionalities of the
+            page.
+          </p>
+        </div>
+        <div class="buttons">
+          <ul v-for="button in buttons" :key="button.key">
+            <li>
+              <img :src="button.img" />
+              {{ button.title }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>

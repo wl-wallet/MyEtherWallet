@@ -28,6 +28,8 @@ const SignMessageContainer = () =>
 const VerifyMessageContainer = () =>
   import('@/layouts/InterfaceLayout/containers/VerifyMessageContainer');
 const HardwaresLayout = () => import('@/layouts/HardwaresLayout');
+const ViewWalletInfoContainer = () =>
+  import('@/layouts/ViewWalletInfoContainer');
 
 import dapps from '@/dapps/routes';
 
@@ -36,6 +38,12 @@ const router = [
     path: '/team',
     name: 'TeamLayout',
     component: TeamLayout,
+    meta: { requiresAuth: false }
+  },
+  {
+    path: '/view-wallet-info',
+    name: 'ViewWalletInfoContainer',
+    component: ViewWalletInfoContainer,
     meta: { requiresAuth: false }
   },
   {

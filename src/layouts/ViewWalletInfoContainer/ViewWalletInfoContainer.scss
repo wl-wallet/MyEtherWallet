@@ -1,14 +1,6 @@
 @import '~@/scss/GlobalVariables';
 @media all and (min-width: calc(#{$tablet-width} + 1px)) {
-  .buttons-container {
-    display: grid;
-    grid-column-gap: 20px;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    margin: 0 auto;
-    max-width: 900px;
-    position: relative;
-    text-align: center;
-  }
+  #aaa
 }
 
 .wrap {
@@ -16,7 +8,32 @@
   padding: 80px 0;
 }
 
-.title {
-  margin-bottom: 50px;
+.page-title {
   text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  h2 {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 42px;
+    margin-bottom: 15px;
+  }
+}
+
+.buttons {
+  ul {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 0 auto;
+    //max-width: 900px;
+    position: relative;
+    text-align: center;
+
+    li {
+      padding: 20px;
+      background-color: $white;
+    }
+  }
 }
