@@ -11,10 +11,19 @@
           </p>
         </div>
         <div class="buttons">
-          <ul v-for="button in buttons" :key="button.key">
-            <li>
-              <img :src="button.img" />
-              {{ button.title }}
+          <ul>
+            <li v-for="button in buttons" :key="button.key">
+              <div class="button-inner-block">
+                <div class="button-icon">
+                  <img :src="button.img" />
+                </div>
+                <div class="button-title">
+                  {{ button.title }}
+                </div>
+                <div class="button-desc">
+                  {{ button.desc }}
+                </div>
+              </div>
             </li>
           </ul>
         </div>
@@ -24,10 +33,10 @@
 </template>
 
 <script>
-import mewConnectImg from '@/assets/images/icons/button-mewconnect.svg';
-import hardwareImg from '@/assets/images/icons/button-hardware.svg';
-import metamaskImg from '@/assets/images/icons/button-metamask.svg';
-import softwareImg from '@/assets/images/icons/button-software.svg';
+import mewConnectImg from '@/assets/images/icons/AccessWallet/button-mewconnect.svg';
+import hardwareImg from '@/assets/images/icons/AccessWallet/button-hardware.svg';
+import metamaskImg from '@/assets/images/icons/AccessWallet/button-metamask.svg';
+import softwareImg from '@/assets/images/icons/AccessWallet/button-software.svg';
 
 export default {
   components: {},
