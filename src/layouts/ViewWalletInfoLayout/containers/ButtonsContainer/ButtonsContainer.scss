@@ -25,7 +25,7 @@
             color: $white;
           }
         }
-      }      
+      }
       &.button-software {
         .button-inner-block:hover {
           background-color: $red-7;
@@ -69,4 +69,10 @@
 
 .button-desc {
   color: $dark-blue-1;
+}
+
+.button-warning-msg {
+  color: $red-7;
+  font-size: 11px;
+  margin-top: 5px;
 }

@@ -12,6 +12,9 @@
           <div class="button-desc">
             {{ button.desc }}
           </div>
+          <div v-if="button.warning" class="button-warning-msg">
+            {{ button.warning }}
+          </div>
         </div>
       </li>
     </ul>
@@ -55,6 +58,7 @@ export default {
           func: this.softwareModalOpen,
           title: this.$t('accessWallet.software'),
           desc: this.$t('accessWallet.softwareDesc'),
+          warning: this.$t('accessWallet.notRecommended'),
           img: softwareImg,
           classname: 'button-software'
         }
