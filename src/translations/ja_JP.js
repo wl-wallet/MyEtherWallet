@@ -20,6 +20,7 @@ import ledgerError from './errors-ledger/ja_JP';
 import secalotError from './errors-secalot/ja_JP';
 import keepkeyError from './errors-keepkey/ja_JP';
 import bitboxError from './errors-bitbox/ja_JP';
+import walletInfo from './wallet-info/ja_JP';
 
 const ja_JP = {
   common: common,
@@ -42,6 +43,7 @@ const ja_JP = {
   ledgerError: ledgerError,
   secalotError: secalotError,
   keepkeyError: keepkeyError,
-  bitboxError: bitboxError
+  bitboxError: bitboxError,
+  walletInfo: walletInfo
 };
 export default ja_JP;

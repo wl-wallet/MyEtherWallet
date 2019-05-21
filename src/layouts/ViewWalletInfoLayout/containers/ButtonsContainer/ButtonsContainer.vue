@@ -1,34 +1,20 @@
 <template>
-  <div class="view-wallet-info">
-    <div class="wrap">
-      <div class="page-container">
-        <div class="page-title">
-          <h2>{{ $t('common.accessMyWallet') }}</h2>
-          <p>
-            Customize your wallet information, and customize, debug transaction
-            process. Please be mindful of the limited functionalities of the
-            page.
-          </p>
+  <div class="buttons">
+    <ul>
+      <li v-for="button in buttons" :key="button.key" :class="button.classname">
+        <div class="button-inner-block">
+          <div class="button-icon">
+            <img :src="button.img" />
+          </div>
+          <div class="button-title">
+            {{ button.title }}
+          </div>
+          <div class="button-desc">
+            {{ button.desc }}
+          </div>
         </div>
-        <div class="buttons">
-          <ul>
-            <li v-for="button in buttons" :key="button.key">
-              <div class="button-inner-block">
-                <div class="button-icon">
-                  <img :src="button.img" />
-                </div>
-                <div class="button-title">
-                  {{ button.title }}
-                </div>
-                <div class="button-desc">
-                  {{ button.desc }}
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -82,5 +68,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import 'ViewWalletInfoContainer.scss';
+@import 'ButtonsContainer.scss';
 </style>

@@ -1,0 +1,72 @@
+@import '~@/scss/GlobalVariables';
+
+.buttons {
+  ul {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    position: relative;
+
+    li {
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+
+      .button-inner-block {
+        min-height: 270px;
+        border-radius: 5px;
+        padding: 30px 20px;
+        background-color: $white;
+        transition: all 0.2s ease;
+        &:hover {
+          margin-top: -10px;
+          background-color: $mew-green;
+          * {
+            color: $white;
+          }
+        }
+      }      
+      &.button-software {
+        .button-inner-block:hover {
+          background-color: $red-7;
+        }
+      }
+    }
+
+    @media all and (min-width: calc(#{$mobile-width} + 1px)) and (max-width: $tablet-width) {
+      grid-template-columns: 1fr 1fr;
+      li .button-inner-block {
+        height: 100%;
+        padding: 30px 20px;
+      }
+      li .button-inner-block:hover {
+        margin-top: 0;
+      }
+    }
+
+    @media all and (max-width: $mobile-width) {
+      grid-template-columns: 1fr;
+      li .button-inner-block {
+        height: 100%;
+        padding: 30px 30px;
+      }
+      li .button-inner-block:hover {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.button-icon {
+  margin-bottom: 10px;
+}
+
+.button-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.button-desc {
+  color: $dark-blue-1;
+}

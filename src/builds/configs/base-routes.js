@@ -28,8 +28,12 @@ const SignMessageContainer = () =>
 const VerifyMessageContainer = () =>
   import('@/layouts/InterfaceLayout/containers/VerifyMessageContainer');
 const HardwaresLayout = () => import('@/layouts/HardwaresLayout');
-const ViewWalletInfoContainer = () =>
-  import('@/layouts/ViewWalletInfoContainer');
+
+const ViewWalletInfo = () => import('@/layouts/ViewWalletInfoLayout');
+const WalletInfoContainer = () =>
+  import('@/layouts/ViewWalletInfoLayout/containers/WalletInfoContainer');
+const WalletInfoButtonsContainer = () =>
+  import('@/layouts/ViewWalletInfoLayout/containers/ButtonsContainer');
 
 import dapps from '@/dapps/routes';
 
@@ -42,9 +46,23 @@ const router = [
   },
   {
     path: '/view-wallet-info',
-    name: 'ViewWalletInfoContainer',
-    component: ViewWalletInfoContainer,
-    meta: { requiresAuth: false }
+    name: 'ViewWalletInfo',
+    component: ViewWalletInfo,
+    meta: { requiresAuth: false },
+    children: [
+      {
+        path: '',
+        name: 'WalletInfoButtonsContainer',
+        component: WalletInfoButtonsContainer,
+        meta: { requiresAuth: false }
+      },
+      {
+        path: 'wallet-info',
+        name: 'WalletInfoContainer',
+        component: WalletInfoContainer,
+        meta: { requiresAuth: false }
+      }
+    ]
   },
   {
     path: '/privacy-policy',
