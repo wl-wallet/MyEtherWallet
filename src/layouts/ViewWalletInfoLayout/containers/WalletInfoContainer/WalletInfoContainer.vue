@@ -1,14 +1,20 @@
 <template>
   <div class="wallet-info">
     <div class="wrap">
-      <div class="page-container"></div>
+      <div class="page-container">
+        <interface-tokens />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import InterfaceTokens from '@/layouts/InterfaceLayout/components/InterfaceTokens';
+
 export default {
-  components: {},
+  components: {
+    'interface-tokens': InterfaceTokens
+  },
   data() {
     return {};
   },
