@@ -55,7 +55,10 @@
               </div>
             </div>
           </div>
-          <interface-tokens />
+          <div>
+            <interface-tokens />
+            <div class="promo-button"><mewconnect /></div>
+          </div>
         </div>
       </div>
     </div>
@@ -64,12 +67,14 @@
 
 <script>
 import InterfaceTokens from '@/layouts/InterfaceLayout/components/InterfaceTokens';
+import Mewconnect from '@/components/Promotion/Mewconnect';
 import Blockie from '@/components/Blockie';
 
 export default {
   components: {
     'interface-tokens': InterfaceTokens,
-    blockie: Blockie
+    blockie: Blockie,
+    mewconnect: Mewconnect
   },
   data() {
     return {

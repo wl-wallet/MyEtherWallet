@@ -90,6 +90,7 @@
               :received-tokens="receivedTokens"
               :reset-token-selection="setTokensWithBalance"
             />
+            <div class="promo-button"><mewconnect /></div>
           </div>
         </div>
       </div>
@@ -98,6 +99,7 @@
 </template>
 
 <script>
+import Mewconnect from '@/components/Promotion/Mewconnect';
 import { mapState } from 'vuex';
 import ENS from 'ethereum-ens';
 import WalletPasswordModal from '@/components/WalletPasswordModal';
@@ -157,7 +159,8 @@ export default {
     'enter-pin-number-modal': EnterPinNumberModal,
     'mobile-interface-address': MobileInterfaceAddress,
     'address-qrcode-modal': AddressQrcodeModal,
-    'ledger-app-modal': LedgerAppModal
+    'ledger-app-modal': LedgerAppModal,
+    mewconnect: Mewconnect
   },
   data() {
     return {

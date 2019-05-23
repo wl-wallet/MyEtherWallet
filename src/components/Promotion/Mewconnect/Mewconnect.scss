@@ -12,19 +12,12 @@
 }
 
 .text-block {
-  font-size: 1.4vw;
-  @media all and (max-width: $mobile-width) {
-    font-size: 5vw;
-  }
-  @media all and (min-width: calc(#{$mobile-width} + 1px)) and (max-width: $tablet-width) {
-    font-size: 5vw;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
 
   .text {
-    position: absolute;
     padding: 1.1em;
-    top: 0;
-    left: 0;
     font-size: inherit;
 
     .title {

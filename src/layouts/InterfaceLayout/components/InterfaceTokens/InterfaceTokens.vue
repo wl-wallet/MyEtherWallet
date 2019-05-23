@@ -85,7 +85,6 @@
           </p>
         </div>
       </div>
-      <div class="promo-button"><mewconnect /></div>
     </div>
   </div>
 </template>
@@ -99,12 +98,10 @@ import InterfaceTokensModal from '../InterfaceTokensModal';
 import sortByBalance from '@/helpers/sortByBalance.js';
 import utils from 'web3-utils';
 import * as networkTypes from '@/networks/types';
-import Mewconnect from '@/components/Promotion/Mewconnect';
 
 export default {
   components: {
-    'interface-tokens-modal': InterfaceTokensModal,
-    mewconnect: Mewconnect
+    'interface-tokens-modal': InterfaceTokensModal
   },
   props: {
     tokens: {
