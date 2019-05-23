@@ -1,5 +1,11 @@
 @import '~@/scss/GlobalVariables';
-
+.cant-load {
+  background-color: $red-1;
+  color: $white;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+}
 .tokens-container {
   border-radius: 5px;
   overflow: hidden;
@@ -104,21 +110,15 @@
   } // .expend-bar
 } // .tokens-container
 
-.bottom-image-container {
-  background-color: $background-color-white;
-  border-radius: 5px;
-  margin-top: 10px;
-  overflow: hidden;
-
-  img {
-    width: 100%;
-  }
-}
-
 .spinner-container {
   text-align: center;
 }
 
 .clickable {
   cursor: pointer;
+}
+
+
+.promo-button {
+  margin-top: 15px;
 }

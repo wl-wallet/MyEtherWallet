@@ -19,6 +19,9 @@
             <i class="fa fa-search" aria-hidden="true" />
           </div>
         </div>
+        <div v-show="!online" class="cant-load">
+          Can't load balances on offline mode
+        </div>
         <div ref="tokenTableContainer" class="token-table-container">
           <table v-show="customTokens.length > 0 && receivedTokens">
             <tr
@@ -40,9 +43,9 @@
             <tr v-for="(token, index) in localTokens" :key="token.name + index">
               <td>{{ token.name }}</td>
               <td
-                v-if="token.balance === 'Load'"
+                v-if="token.balance === 'Load' && online"
                 class="load-token"
-                @click="getSpecificTokenBalance(token)"
+                @click="online ? getSpecificTokenBalance(token) : () => {}"
               >
                 {{ token.balance }}
               </td>
@@ -82,32 +85,26 @@
           </p>
         </div>
       </div>
-      <div class="bottom-image-container">
-        <a
-          rel="noopener noreferrer"
-          href="https://mewconnect.myetherwallet.com/#/"
-          target="_blank"
-        >
-          <img class="icon" src="~@/assets/images/etc/mewconnect.jpeg" />
-        </a>
-      </div>
+      <div class="promo-button"><mewconnect /></div>
     </div>
   </div>
 </template>
 
 <script>
 import store from 'store';
-import { mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import { Toast } from '@/helpers';
 import { toChecksumAddress } from '@/helpers/addressUtils';
 import InterfaceTokensModal from '../InterfaceTokensModal';
 import sortByBalance from '@/helpers/sortByBalance.js';
 import utils from 'web3-utils';
 import * as networkTypes from '@/networks/types';
+import Mewconnect from '@/components/Promotion/Mewconnect';
 
 export default {
   components: {
-    'interface-tokens-modal': InterfaceTokensModal
+    'interface-tokens-modal': InterfaceTokensModal,
+    mewconnect: Mewconnect
   },
   props: {
     tokens: {
@@ -143,10 +140,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters({
-      network: 'network',
-      web3: 'web3'
-    })
+    ...mapState(['network', 'web3', 'online'])
   },
   watch: {
     receivedTokens() {
