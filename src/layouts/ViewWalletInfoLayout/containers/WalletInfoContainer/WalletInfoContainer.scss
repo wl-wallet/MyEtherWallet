@@ -54,6 +54,12 @@
 
   .value {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+    img {
+      margin-left: 5px;
+      cursor: pointer;
+    }
   }
 }
 

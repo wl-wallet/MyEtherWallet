@@ -13,6 +13,8 @@
                 <h4>Balance</h4>
                 <div class="value">
                   <h4>1.3450345345 <span>ETH</span></h4>
+                  <img src="@/assets/images/icons/WalletInfo/refresh.svg" />
+                  <img src="@/assets/images/icons/WalletInfo/more.svg" />
                 </div>
               </div>
               <div class="blockie-container">
@@ -31,17 +33,21 @@
               <div class="address-value">
                 <div class="value">{{ address }}</div>
                 <div class="last4">5636</div>
-                <img src="@/assets/images/icons/printer.svg" />
+                <img src="@/assets/images/icons/WalletInfo/copy.svg" />
               </div>
               <div class="buttons">
                 <button>
-                  <img src="@/assets/images/icons/printer.svg" />Private Key
+                  <img src="@/assets/images/icons/WalletInfo/pkey.svg" />Private
+                  Key
                 </button>
                 <button>
-                  <img src="@/assets/images/icons/printer.svg" />Txn History
+                  <img src="@/assets/images/icons/WalletInfo/history.svg" />Txn
+                  History
                 </button>
                 <button>
-                  <img src="@/assets/images/icons/printer.svg" />Keystore File
+                  <img
+                    src="@/assets/images/icons/WalletInfo/keystore.svg"
+                  />Keystore File
                 </button>
                 <button>
                   <img src="@/assets/images/icons/printer.svg" />Print Wallet

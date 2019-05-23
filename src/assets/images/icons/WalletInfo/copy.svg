@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55 (78076) - https://sketchapp.com -->
+    <title>Group 14</title>
+    <desc>Created with Sketch.</desc>
+    <g id="View-Wallet-Info" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="view-wallet-info-2" transform="translate(-684.000000, -557.000000)">
+            <g id="Group-23" transform="translate(311.000000, 288.000000)">
+                <g id="Group-20" transform="translate(88.000000, 148.000000)">
+                    <g id="Group-6" transform="translate(0.000000, 113.000000)">
+                        <g id="Group-14" transform="translate(30.000000, 8.000000)">
+                            <g id="Group-5" transform="translate(261.000000, 6.000000)">
+                                <g id="Group-4">
+                                    <g id="copy" transform="translate(2.000000, 0.000000)">
+                                        <polygon id="Rectangle" fill="#05C0A5" points="1.1 0 12.1 0 12.1 5.99678593 5.89903353 6.35785206 5.20582877 15.1393846 1.1 15.4"></polygon>
+                                        <rect id="Rectangle" stroke="#0B2840" stroke-width="1.6" fill-rule="nonzero" x="4.94166667" y="5.84646154" width="10.825" height="14.3804615" rx="2"></rect>
+                                        <path d="M4.15396529,15.2732143 L1.68673001,15.2732143 C0.838354448,15.2732143 0.414166667,14.6827063 0.414166667,13.5016902 C0.414166667,12.3206742 0.414166667,8.44791582 0.414166667,1.88341515 C0.414166667,0.896584762 0.95051943,0.403169566 2.02322496,0.403169566 C3.09593048,0.403169566 5.92672105,0.403169566 10.5155967,0.403169566 C11.5207986,0.403169566 12.0233995,0.896584762 12.0233995,1.88341515 C12.0233995,2.87024554 12.0233995,3.97109246 12.0233995,5.18595591" id="Path-14" stroke="#0B2840" stroke-width="1.5" fill-rule="nonzero"></path>
+                                        <path d="M7.455,11.7750769 L13.2533333,11.7750769" id="Line-5" stroke="#0B2840" stroke-width="1.6" stroke-linecap="round" fill-rule="nonzero"></path>
+                                        <path d="M7.455,15.1393846 L11.5966667,15.1393846" id="Line-5" stroke="#0B2840" stroke-width="1.6" stroke-linecap="round" fill-rule="nonzero"></path>
+                                    </g>
+                                </g>
+                            </g>
+                            <text id="0xDECAF9CD2367cdb12f" font-family="AvenirNext-Regular, Avenir Next" font-size="14" font-weight="normal" fill="#0B2840">
+                                <tspan x="9.031" y="21">0xDECAF9CD2367cdb12fe34…FcAe</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
