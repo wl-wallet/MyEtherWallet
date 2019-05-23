@@ -30,12 +30,22 @@
               </div>
               <div class="address-value">
                 <div class="value">{{ address }}</div>
+                <div class="last4">5636</div>
+                <img src="@/assets/images/icons/printer.svg" />
               </div>
               <div class="buttons">
-                <button>Private Key</button>
-                <button>Txn History</button>
-                <button>Keystore File</button>
-                <button>Print Wallet</button>
+                <button>
+                  <img src="@/assets/images/icons/printer.svg" />Private Key
+                </button>
+                <button>
+                  <img src="@/assets/images/icons/printer.svg" />Txn History
+                </button>
+                <button>
+                  <img src="@/assets/images/icons/printer.svg" />Keystore File
+                </button>
+                <button>
+                  <img src="@/assets/images/icons/printer.svg" />Print Wallet
+                </button>
               </div>
             </div>
           </div>
