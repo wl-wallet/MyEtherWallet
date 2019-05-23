@@ -1,6 +1,5 @@
 @import '~@/scss/GlobalVariables';
 
-
 .mewconnect {
   background-color: $light-green-6;
   border-radius: 5px;
@@ -12,7 +11,7 @@
   width: 100%;
 }
 
-.text-block{
+.text-block {
   font-size: 1.4vw;
   @media all and (max-width: $mobile-width) {
     font-size: 5vw;
