@@ -2,13 +2,17 @@
 
 .wrap {
   background-color: $background-color-1;
-  padding: 80px 0;
+  padding: 0;
 }
 
 .content-block {
   display: grid;
-  grid-template-columns: 1fr 350px;
-  grid-gap: 10px;
+  grid-template-columns: 60% 40%;
+  grid-gap: 15px;
+
+  @media all and (max-width: 850px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .title-bar {
@@ -29,6 +33,7 @@
 
   .right {
     margin-left: auto;
+    text-align: right;
   }
 }
 
@@ -45,6 +50,10 @@
   display: flex;
   align-items: center;
 
+  @media all and (max-width: 500px) {
+    display: block;
+  }
+
   h4 {
     font-weight: 600;
     span {
@@ -59,6 +68,14 @@
     img {
       margin-left: 5px;
       cursor: pointer;
+    }
+    @media all and (max-width: 500px) {
+      h4 {
+        font-size: 13px;
+        span {
+          font-size: inherit;
+        }
+      }
     }
   }
 }
@@ -83,9 +100,11 @@
   max-width: 400px;
   margin: 0 auto;
   border-radius: 4px;
-  display: flex;
   align-items: center;
   padding: 20px 20px;
+  display: grid;
+  grid-template-columns: 1fr 50px 30px;
+
 
   .value {
     white-space: nowrap;
@@ -96,7 +115,6 @@
 
   img {
     height: 30px;
-    margin-left: 15px;
     cursor: pointer;
   }
 }
@@ -107,14 +125,32 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 50px;
+  @media all and (max-width: 500px) {
+    grid-gap: 40px 10px;
+  }
 
   button {
     text-align: left;
     border: 0;
     background-color: $white;
+    display: flex;
+    align-items: center;
     img {
       height: 30px;
       margin-right: 10px;
     }
+
+    @media all and (max-width: 500px) {
+      display: block;
+      text-align: center;
+      img {
+        margin-right: 0px;
+      }
+    }
+  
   }
+}
+
+.promo-button {
+  margin-top: 15px;
 }
